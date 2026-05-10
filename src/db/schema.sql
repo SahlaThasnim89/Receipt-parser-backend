@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS receipts (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  merchant TEXT,
+  date TEXT,
+  total REAL,
+  items TEXT,
+  image_path TEXT,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
