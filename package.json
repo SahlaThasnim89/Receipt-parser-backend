@@ -10,11 +10,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@genkit-ai/google-genai": "^1.33.0",
+    "@google-cloud/logging": "^11.2.1",
+    "@google/genai": "^2.0.1",
     "axios": "^1.16.0",
     "better-sqlite3": "^12.9.0",
+    "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "genkit": "^1.33.0",
     "multer": "^2.1.1",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.13",

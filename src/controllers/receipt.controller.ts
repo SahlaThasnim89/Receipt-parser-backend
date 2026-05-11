@@ -1,17 +1,21 @@
 import { RequestHandler } from "express";
 import db from "../db/index"
+import { parseReceiptWithLLM } from "./../services/llmService"
 
-export const uploadReceipt: RequestHandler = (req, res) => {
+export const uploadReceipt: RequestHandler = async(req, res) => {
     try {
         if (!req.file) {
             return res.status(400).json({ message: "No file uploaded" });
         }
-        console.log(req.file)
-        const receiptData = {
-            filename: req.file.filename,
-            path: req.file.path,
-            mimetype: req.file.mimetype,
-        };
+        console.log(req.file.buffer,req.file.mimetype)
+        // const receiptData = {
+        //     filename: req.file.filename,
+        //     path: req.file.path,
+        //     mimetype: req.file.mimetype,
+        // };
+        const receiptData = await parseReceiptWithLLM(req.file.buffer, req.file.mimetype);
+        console.log(receiptData)
+        res.json(receiptData);
 
         return res.status(200).json({
             message: "Receipt uploaded successfully",

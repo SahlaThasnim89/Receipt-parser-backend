@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express"
 import router from "./routes/receipt.routes"
 import multer from 'multer';
+import 'dotenv/config';
 
 const app = express()
 const port = 8080;
@@ -10,7 +11,6 @@ app.use(express.json());
 app.use(router)
 
 app.use((err: any, _req: any, res: any, _next: any) => {
-  // Check if it's a Multer error or our custom validation error
   if (err instanceof multer.MulterError || err.message.includes('Invalid file type')) {
     return res.status(400).json({ 
       success: false, 
